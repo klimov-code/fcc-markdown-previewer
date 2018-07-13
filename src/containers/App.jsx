@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { UPDATE_MARKDOWN } from '../constants/actionTypes'
+import { updateMarkdown } from '../actions';
 import './App.css';
+import Editor from '../components/Editor';
+import Previewer from '../components/Previewer';
 
-export default class App extends Component {
+class App extends Component {
 	constructor(props) {
 		super(props);
 		this.handleChange = this.handleChange.bind(this);
@@ -28,3 +33,12 @@ export default class App extends Component {
 	}
 }
 
+const mapStateToProps = (state) => ({
+	markdown: state.markdown
+});
+
+const mapDispatchToProps = (dispatch) => ({
+	updateMarkdown: (markdown) => dispatch(updateMarkdown(markdown))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
