@@ -1,14 +1,16 @@
-import * as types from '../constants/ActionTypes';
-import { INITIAL_STATE } from '../constants/InitialState';
+import { UPDATE_MARKDOWN } from '../constants/actionTypes';
+import { INITIAL_STATE } from '../constants/initialState';
 
-export default rootReducer = (state = INITIAL_STATE, action) => {
+const rootReducer = (state = INITIAL_STATE, action) => {
 	switch (action.type) {
-		case types.UPDATE:
+		case UPDATE_MARKDOWN:
 			return {
         ...state,
-        markdown: action.payload
+        markdown: action.markdown
       }
 		default:
 			return state;
 	}
 }
+
+export default rootReducer;
