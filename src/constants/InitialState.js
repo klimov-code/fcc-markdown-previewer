@@ -1,7 +1,3 @@
-export const INITIAL_STATE = {
-  markdown: placeholder
-}
-
 const placeholder = `# Welcome to my React Markdown Previewer!
 
 ## This is a sub-heading...
@@ -47,3 +43,8 @@ And here. | Okay. | I think we get it.
 * And last but not least, let's not forget embedded images:
 
 ![React Logo w/ Text](https://goo.gl/Umyytc)`
+
+export const INITIAL_STATE = {
+  markdown: placeholder
+}
+

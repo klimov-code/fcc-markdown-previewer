@@ -1,1 +1,1 @@
-export const UPDATE = 'UPDATE';
+export const UPDATE_MARKDOWN = 'UPDATE_MARKDOWN';
