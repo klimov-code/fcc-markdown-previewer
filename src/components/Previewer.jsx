@@ -7,10 +7,12 @@ marked.setOptions({
 });
 
 const renderer = new marked.Renderer();
-renderer.link = (href, _, text) => `<a target='_blank' href='${href}'>${text}</a>`;
+renderer.link = (href, title, text) => `<a target='_blank' rel='noopener noreferrer' href='${href}' title='${title}'>${text}</a>`;
 
-export default Previewer = ({ markdown }) =>
+const Previewer = ({ markdown }) =>
 	<div 
 		id='preview'
 		dangerouslySetInnerHTML={{__html: marked(markdown, { renderer })}}
-	/>
+	/>;
+
+export default Previewer;
