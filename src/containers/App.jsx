@@ -19,7 +19,7 @@ class App extends Component {
 		const { markdown } = this.props;
 		
 		return(
-			<div>
+			<main className='wrapper'>
 				<Editor
 					markdown={markdown}
 					onChange={this.handleChange}
@@ -27,7 +27,7 @@ class App extends Component {
 				<Previewer
 					markdown={markdown}	
 				/>
-			</div>
+			</main>
 		);
 	}
 }

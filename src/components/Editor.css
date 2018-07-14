@@ -1,0 +1,10 @@
+.editor {
+  grid-area: editor;
+}
+
+.editor__textarea {
+  height: 100vh;
+  width: 50vw;
+  outline: none;
+  border: none;
+}
