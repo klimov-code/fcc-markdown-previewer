@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { UPDATE_MARKDOWN } from '../constants/actionTypes'
 import { updateMarkdown } from '../actions';
 import './App.css';
 import Editor from '../components/Editor';
