@@ -1,8 +1,10 @@
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import { createLogger } from 'redux-logger';
 import rootReducer from '../reducers';
 import { INITIAL_STATE } from '../constants/initialState';
+
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const middleware = [ thunk ];
 if (process.env.NODE_ENV !== 'production') {
@@ -11,9 +13,11 @@ if (process.env.NODE_ENV !== 'production') {
 
 export default function configureStore(initialState = INITIAL_STATE) {
   const store = createStore(
-    rootReducer, 
-    initialState, 
-    applyMiddleware(...middleware)
+    rootReducer,
+    initialState,
+    composeEnhancers(
+      applyMiddleware(...middleware)
+    )
   );
 
   if (module.hot) {
