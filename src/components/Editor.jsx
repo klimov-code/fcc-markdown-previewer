@@ -1,16 +1,60 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { updateMarkdown } from '../actions';
 import './Editor.css';
 
-const Editor = ({ markdown, onChange }) =>
-	<div className='editor'>
-		<textarea
-			id='editor'
-			className='editor__textarea'
-			value={markdown}
-			onChange={onChange}
-			type='text'
-			autoFocus={true}
-		/>
-	</div>
+const LINE_HEIGHT = 18;
 
-export default Editor;
+class Editor extends Component {
+	constructor(props) {
+		super(props);
+		this.handleChange = this.handleChange.bind(this);
+	}
+
+	componentDidMount() {
+		this.mounted = true;
+
+		this.setRows();
+	}
+
+	setRows() {
+		if (this.mounted) {
+			const oldRows = this.textArea.rows;
+			this.textArea.rows = 1;
+			const newRows = ~~(this.textArea.scrollHeight / LINE_HEIGHT)
+
+			this.textArea.rows = oldRows !== newRows ? newRows : oldRows;
+		}
+	}
+
+	handleChange(e) {
+		this.props.updateMarkdown(e.target.value);
+		this.setRows();
+	}
+
+	render() {
+		const { markdown } = this.props;
+
+		return(
+			<div className='editor'>
+				<textarea
+					id='editor'
+					className='editor__textarea'
+					value={markdown}
+
+					type='text'
+					autoFocus={true}
+
+					onChange={this.handleChange}
+					ref={(textArea) => this.textArea = textArea}
+				/>
+			</div>
+		);
+	}
+}
+
+const mapDispatchToProps = (dispatch) => ({
+	updateMarkdown: (markdown) => dispatch(updateMarkdown(markdown))
+});
+
+export default connect(null, mapDispatchToProps)(Editor);
