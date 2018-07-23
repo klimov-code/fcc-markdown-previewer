@@ -1,3 +1,67 @@
 .previewer {
+  padding: 15px;
+
+  border: 1px solid #DDD;
+  border-radius: 4px;
+  background-color: #FFF;
+
   grid-area: previewer;
+}
+
+.previewer thead {
+  background-color: #DDD;
+}
+
+.previewer tbody {
+  background-color: #F8F8F8;
+}
+
+.previewer td {
+  padding: 5px 10px;
+}
+
+.previewer hr {
+  border: none;
+  background: transparent;
+}
+
+.previewer blockquote {
+  padding: 0 15px;
+
+  color: #777;
+  border-left: 4px solid #DDD;
+}
+
+.previewer h2,
+.previewer h3,
+.previewer h4,
+.previewer h5,
+.previewer h6 {
+  margin: 20px 0 10px;
+
+  border-bottom: 1px solid #CCC;
+}
+
+.previewer a {
+  text-decoration: none;
+
+  color: #4183C4;
+}
+
+.previewer a:hover {
+  text-decoration: underline;
+}
+
+.previewer :not(pre) > code {
+  border: 1px solid #CCC;
+  border-radius: 4px;
+  background-color: #F8F8F8;
+}
+
+.previewer pre {
+  padding: .5vw;
+
+  border: 1px solid #CCC;
+  border-radius: 4px;
+  background-color: #F8F8F8;
 }

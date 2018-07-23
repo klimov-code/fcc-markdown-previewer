@@ -1,4 +1,7 @@
 body {
   box-sizing: border-box;
-  font-family: Consolas, "Liberation Mono", Courier, monospace;
+
+  background-color: #444;
+
+  font-family: Consolas, 'Liberation Mono', Courier, monospace;
 }

@@ -1,10 +1,27 @@
 .editor {
+  padding: 15px;
+
+  border: 1px solid #CFD8DC;
+  border-radius: 4px;
+  background-color: #FFF;
+
   grid-area: editor;
 }
 
+.editor:focus-within {
+  background-color: #DEF0E7;
+}
+
 .editor__textarea {
-  height: 100vh;
-  width: 50vw;
+  overflow: hidden;
+
+  box-sizing: border-box;
+  width: 100%;
+  padding: 10px;
+
+  resize: none;
+
+  border: 1px solid #CFD8DC;
+  border-radius: 4px;
   outline: none;
-  border: none;
 }

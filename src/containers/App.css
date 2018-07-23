@@ -1,9 +1,10 @@
 .wrapper {
   display: grid;
-  
+
+  padding: 10px 50px;
+
+  grid-gap: 20px;
   grid-template-areas: 'editor previewer';
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr;
-
-  padding: 10px 50px;
 }
