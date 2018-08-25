@@ -6,55 +6,56 @@ import './Editor.css';
 const LINE_HEIGHT = 18;
 
 class Editor extends Component {
-	constructor(props) {
-		super(props);
-		this.handleChange = this.handleChange.bind(this);
-	}
+  constructor(props) {
+    super(props);
+    this.handleChange = this.handleChange.bind(this);
+  }
 
-	componentDidMount() {
-		this.mounted = true;
+  componentDidMount() {
+    this.mounted = true;
 
-		this.setRows();
-	}
+    this.setRows();
+  }
 
-	setRows() {
-		if (this.mounted) {
-			const oldRows = this.textArea.rows;
-			this.textArea.rows = 1;
-			const newRows = ~~(this.textArea.scrollHeight / LINE_HEIGHT)
+  setRows() {
+    if (this.mounted) {
+      const oldRows = this.textArea.rows;
+      this.textArea.rows = 1;
+      const newRows = ~~(this.textArea.scrollHeight / LINE_HEIGHT);
 
-			this.textArea.rows = oldRows !== newRows ? newRows : oldRows;
-		}
-	}
+      this.textArea.rows = oldRows !== newRows ? newRows : oldRows;
+    }
+  }
 
-	handleChange(e) {
-		this.props.updateMarkdown(e.target.value);
-		this.setRows();
-	}
+  handleChange(e) {
+    this.props.updateMarkdown(e.target.value);
+    this.setRows();
+  }
 
-	render() {
-		const { markdown } = this.props;
+  render() {
+    const { markdown } = this.props;
 
-		return(
-			<div className='editor'>
-				<textarea
-					id='editor'
-					className='editor__textarea'
-					value={markdown}
-
-					type='text'
-					autoFocus={true}
-
-					onChange={this.handleChange}
-					ref={(textArea) => this.textArea = textArea}
-				/>
-			</div>
-		);
-	}
+    return (
+      <div className="editor">
+        <textarea
+          id="editor"
+          className="editor__textarea"
+          value={markdown}
+          type="text"
+          autoFocus={true}
+          onChange={this.handleChange}
+          ref={textArea => (this.textArea = textArea)}
+        />
+      </div>
+    );
+  }
 }
 
-const mapDispatchToProps = (dispatch) => ({
-	updateMarkdown: (markdown) => dispatch(updateMarkdown(markdown))
+const mapDispatchToProps = dispatch => ({
+  updateMarkdown: markdown => dispatch(updateMarkdown(markdown)),
 });
 
-export default connect(null, mapDispatchToProps)(Editor);
+export default connect(
+  null,
+  mapDispatchToProps
+)(Editor);

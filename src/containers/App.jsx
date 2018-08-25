@@ -4,18 +4,18 @@ import './App.css';
 import Editor from '../components/Editor';
 import Previewer from '../components/Previewer';
 
-const App = ({ markdown }) =>
-	<main className='wrapper'>
-		<Editor
-			markdown={markdown}
-		/>
-		<Previewer
-			markdown={markdown}	
-		/>
-	</main>;
+const App = ({ markdown }) => (
+  <main className="wrapper">
+    <Editor markdown={markdown} />
+    <Previewer markdown={markdown} />
+  </main>
+);
 
-const mapStateToProps = (state) => ({
-	markdown: state.markdown
+const mapStateToProps = state => ({
+  markdown: state.markdown,
 });
 
-export default connect(mapStateToProps)(App);
+export default connect(
+  mapStateToProps,
+  null
+)(App);
